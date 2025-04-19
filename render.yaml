@@ -2,9 +2,10 @@ services:
   - type: web
     name: willenstest
     env: python
-    buildCommand: ""
+    buildCommand: pip install -r requirements.txt
     startCommand: gunicorn willenstest.wsgi:application
-    plan: free
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: willenstest.settings
+      - key: PYTHON_VERSION
+        value: 3.11
