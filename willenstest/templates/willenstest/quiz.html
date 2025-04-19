@@ -1,0 +1,10 @@
+{% extends "willenstest/base.html" %}
+
+{% block content %}
+  <h2>Willenstest – Fragebogen</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Absenden</button>
+  </form>
+{% endblock %}

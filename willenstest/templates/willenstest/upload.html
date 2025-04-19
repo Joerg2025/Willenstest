@@ -1,0 +1,15 @@
+{% extends "willenstest/base.html" %}
+
+{% block content %}
+  <h2>CSV-Fragenimport (nur für Admins)</h2>
+
+  {% if user.is_authenticated %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">CSV hochladen</button>
+    </form>
+  {% else %}
+    <p>🔒 Bitte <a href="{% url 'admin:login' %}?next={{ request.path }}">anmelden</a>, um Fragen zu importieren.</p>
+  {% endif %}
+{% endblock %}

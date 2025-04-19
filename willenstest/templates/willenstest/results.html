@@ -1,0 +1,28 @@
+{% extends "willenstest/base.html" %}
+
+{% block content %}
+  <h2>Auswertung</h2>
+  {% if scored_feedback %}
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Frage</th>
+          <th>Bewertung</th>
+          <th>Feedback</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for frage, score, farbe in scored_feedback %}
+        <tr>
+          <td>{{ frage }}</td>
+          <td>{{ score }}</td>
+          <td>{{ farbe }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="/" class="btn btn-primary">Zurück zum Fragebogen</a>
+  {% else %}
+    <p>Keine Daten vorhanden.</p>
+  {% endif %}
+{% endblock %}
